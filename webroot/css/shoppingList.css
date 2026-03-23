@@ -1,0 +1,736 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+    background-color: #0b1a2e;
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: #2c2c2c;
+    line-height: 1.6;
+}
+.night-sky-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #0b1a2e 0%, #1c3154 40%, #2a3e69 100%);
+    z-index: -10;
+    opacity: 0.8;
+}
+.bistro-lights {
+    position: fixed;
+    border-radius: 50%;
+    z-index: -8;
+    animation: glow 3s infinite alternate;
+}
+.bistro-lights-1 {
+    top: 15%;
+    left: 10%;
+    width: 120px;
+    height: 120px;
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.4) 0%, rgba(255, 215, 0, 0) 70%);
+}
+.bistro-lights-2 {
+    top: 30%;
+    right: 15%;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(ellipse at center, rgba(255, 215, 0, 0.3) 0%, rgba(255, 215, 0, 0) 70%);
+}
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 30px 20px 50px;
+    position: relative;
+    background: rgba(255, 250, 240, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3),
+    0 0 100px rgba(255, 215, 0, 0.2);
+    overflow: hidden;
+}
+.bistro-sign {
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+}
+.bistro-sign-inner {
+    display: inline-block;
+    position: relative;
+    padding: 20px 30px;
+    background-color: #1a3054;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    border: 4px double #d4af37;
+}
+.bistro-sign h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.2rem;
+    margin: 0;
+    color: #d4af37;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+.bistro-tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    margin-top: 5px;
+    font-weight: 300;
+}
+.shopping-list-content {
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+}
+.shopping-list-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+.shopping-list-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: #1a3054;
+    margin: 0 20px;
+    position: relative;
+    text-align: center;
+}
+.shopping-list-header h2::after {
+    content: '';
+    position: absolute;
+    width: 80%;
+    height: 3px;
+    bottom: -8px;
+    left: 10%;
+    background-color: #d4af37;
+    border-radius: 2px;
+}
+.shopping-list-table-container {
+    margin-bottom: 30px;
+    position: relative;
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+.shopping-list-table-wrapper {
+    background: rgba(30, 40, 60, 0.9);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    border-bottom: none;
+}
+.table-decoration-bottom {
+    height: 20px;
+    background-color: #e0e0e0;
+    border-radius: 0 0 8px 8px;
+    position: relative;
+    margin-top: -1px;
+    box-shadow: 0 8px 15px -5px rgba(0, 0, 0, 0.1);
+}
+.table-decoration-bottom::before {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    height: 10px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border-radius: 50%;
+    filter: blur(2px);
+}
+.bistro-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Montserrat', sans-serif;
+}
+.bistro-table th {
+    background-color: #1a3054;
+    color: #f5f5f5;
+    padding: 15px;
+    font-weight: 600;
+    text-align: left;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #d4af37;
+}
+.bistro-table td {
+    padding: 14px 15px;
+    border-bottom: 1px solid #e0e0e0;
+    vertical-align: middle;
+}
+.bistro-table tr:last-child td {
+    border-bottom: none;
+}
+.ingredient-name-header {
+    width: 50%;
+}
+.ingredient-quantity-header {
+    width: 15%;
+}
+.ingredient-unit-header {
+    width: 20%;
+}
+.ingredient-name {
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+    color: #1a3054;
+}
+.ingredient-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    margin-right: 15px;
+    position: relative;
+}
+.ingredient-icon {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+.ingredient-quantity, .ingredient-unit {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    color: #555;
+}
+.ingredient-unit {
+    font-style: italic;
+}
+.bistro-table tr:hover td {
+    background-color: rgba(212, 175, 55, 0.05);
+}
+.bistro-table tr:hover .ingredient-name {
+    color: #d4af37;
+}
+.empty-list {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    margin: 30px auto;
+    max-width: 600px;
+}
+.empty-list p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #4a4a4a;
+}
+.empty-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #1a3054;
+    font-size: 1.1rem;
+    margin: 20px auto 30px;
+    max-width: 80%;
+    position: relative;
+    padding: 0 20px;
+}
+.empty-quote::before {
+    content: '"';
+    font-size: 3rem;
+    position: absolute;
+    left: 0;
+    top: -20px;
+    color: #d4af37;
+}
+.export-section {
+    margin-top: 60px;
+    padding: 30px;
+    background-color: rgba(30, 40, 60, 0.5);
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    position: relative;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+}
+.french-flag-divider {
+    width: 80%;
+    height: 6px;
+    display: flex;
+    margin: 0 auto 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.flag-blue, .flag-white, .flag-red {
+    height: 100%;
+    flex: 1;
+}
+.flag-blue {
+    background-color: #002395;
+    border-radius: 3px 0 0 3px;
+}
+.flag-white {
+    background-color: #ffffff;
+}
+.flag-red {
+    background-color: #ed2939;
+    border-radius: 0 3px 3px 0;
+}
+.export-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.export-header h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    color: #1a3054;
+    margin: 0;
+    position: relative;
+}
+.export-header h3::after {
+    content: '';
+    position: absolute;
+    width: 70%;
+    height: 2px;
+    bottom: -8px;
+    left: 15%;
+    background-color: #d4af37;
+    border-radius: 2px;
+}
+.export-description {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 1.05rem;
+    color: #555;
+}
+.export-buttons-container {
+    position: relative;
+    opacity: 1;
+    transform: translateY(20px);
+    transition: opacity 0.6s, transform 0.6s;
+    transition-delay: 0.2s;
+}
+.export-buttons {
+    background: rgba(30, 40, 60, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+}
+.export-row {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.export-row:last-child {
+    margin-bottom: 0;
+}
+.export-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    text-decoration: none;
+    border-radius: 10px;
+    margin: 5px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid transparent;
+}
+.export-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+    );
+    transition: left 0.5s;
+    z-index: 1;
+}
+.export-button.hovering::before {
+    left: 150%;
+}
+.export-button i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    z-index: 2;
+    position: relative;
+}
+.export-button span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    position: relative;
+}
+.export-pdf {
+    color: #dc3545;
+    border-color: rgba(220, 53, 69, 0.3);
+}
+.export-pdf:hover {
+    background-color: rgba(220, 53, 69, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(220, 53, 69, 0.2);
+}
+.export-excel {
+    color: #28a745;
+    border-color: rgba(40, 167, 69, 0.3);
+}
+.export-excel:hover {
+    background-color: rgba(40, 167, 69, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(40, 167, 69, 0.2);
+}
+.export-powerpoint {
+    color: #fd7e14;
+    border-color: rgba(253, 126, 20, 0.3);
+}
+.export-powerpoint:hover {
+    background-color: rgba(253, 126, 20, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(253, 126, 20, 0.2);
+}
+.export-word {
+    color: #0d6efd;
+    border-color: rgba(13, 110, 253, 0.3);
+}
+.export-word:hover {
+    background-color: rgba(13, 110, 253, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(13, 110, 253, 0.2);
+}
+.export-png {
+    color: #20c997;
+    border-color: rgba(32, 201, 151, 0.3);
+}
+.export-png:hover {
+    background-color: rgba(32, 201, 151, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(32, 201, 151, 0.2);
+}
+.export-txt {
+    color: #6c757d;
+    border-color: rgba(108, 117, 125, 0.3);
+}
+.export-txt:hover {
+    background-color: rgba(108, 117, 125, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(108, 117, 125, 0.2);
+}
+.export-json {
+    color: #6f42c1;
+    border-color: rgba(111, 66, 193, 0.3);
+}
+.export-json:hover {
+    background-color: rgba(111, 66, 193, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(111, 66, 193, 0.2);
+}
+.export-xml {
+    color: #d63384;
+    border-color: rgba(214, 51, 132, 0.3);
+}
+.export-xml:hover {
+    background-color: rgba(214, 51, 132, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(214, 51, 132, 0.2);
+}
+.export-csv {
+    color: #0dcaf0;
+    border-color: rgba(13, 202, 240, 0.3);
+}
+.export-csv:hover {
+    background-color: rgba(13, 202, 240, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(13, 202, 240, 0.2);
+}
+.actions-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+.bistro-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    cursor: pointer;
+    border: 2px solid;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+.bistro-button i {
+    margin-right: 8px;
+    font-size: 1.1rem;
+}
+.return-button {
+    background-color: white;
+    color: #1a3054;
+    border-color: #1a3054;
+}
+.return-button:hover {
+    background-color: #1a3054;
+    color: white;
+}
+.bistro-button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+@keyframes glow {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0.6;
+    }
+}
+@media (max-width: 1200px) {
+    .bistro-sign::before, .bistro-sign::after {
+        width: 120px;
+    }
+    .export-row {
+        justify-content: center;
+    }
+    .export-button {
+        width: 110px;
+        height: 110px;
+        font-size: 0.85rem;
+    }
+}
+@media (max-width: 992px) {
+    .bistro-sign::before, .bistro-sign::after {
+        display: none;
+    }
+    .bistro-sign h1 {
+        font-size: 2.8rem;
+    }
+    .bistro-tagline {
+        font-size: 1rem;
+    }
+    .shopping-list-header h2 {
+        font-size: 1.8rem;
+    }
+    .export-button {
+        width: 100px;
+        height: 100px;
+    }
+    .export-button i {
+        font-size: 2rem;
+    }
+    .bistro-button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+}
+@media (max-width: 768px) {
+    .main-container {
+        padding: 20px 15px 40px;
+        margin: 20px 15px;
+    }
+    .bistro-sign h1 {
+        font-size: 2.5rem;
+    }
+    .export-row {
+        margin-bottom: 10px;
+    }
+    .export-button {
+        width: 90px;
+        height: 90px;
+        margin: 5px;
+    }
+    .export-button i {
+        font-size: 1.8rem;
+        margin-bottom: 5px;
+    }
+    .export-button span {
+        font-size: 0.8rem;
+    }
+    .actions-footer {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .bistro-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+@media (max-width: 576px) {
+    .bistro-sign h1 {
+        font-size: 2rem;
+    }
+    .bistro-tagline {
+        font-size: 0.9rem;
+    }
+    .shopping-list-header h2 {
+        font-size: 1.6rem;
+    }
+    .bistro-table {
+        display: block;
+        overflow-x: auto;
+    }
+    .ingredient-icon-wrapper {
+        width: 30px;
+        height: 30px;
+        margin-right: 10px;
+    }
+    .bistro-table th, .bistro-table td {
+        padding: 10px;
+    }
+    .empty-basket {
+        width: 140px;
+        height: 140px;
+    }
+    .empty-quote {
+        font-size: 0.9rem;
+    }
+    .export-header h3 {
+        font-size: 1.5rem;
+    }
+    .export-description {
+        font-size: 0.9rem;
+    }
+    .export-row {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .export-button {
+        width: 85px;
+        height: 85px;
+        margin: 4px;
+    }
+}
+::selection {
+    background-color: #d4af37;
+    color: white;
+}
+.export-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.3);
+}
+.main-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0) 80%,
+    rgba(255, 255, 255, 0.05) 100%);
+    pointer-events: none;
+    z-index: 2;
+}
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.7);
+    pointer-events: none;
+    z-index: 999;
+}
+::-webkit-scrollbar {
+    width: 10px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb {
+    background: #1a3054;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+}
+.french-flag-divider {
+    position: relative;
+    overflow: hidden;
+}
+.export-button:hover {
+    animation: none;
+}
+.shopping-list-header h2, .export-header h3 {
+    position: relative;
+}
+.bistro-table tr {
+    transition: transform 0.2s;
+}
+.bistro-table tr:hover {
+    transform: translateX(5px);
+}
+a:focus, button:focus, input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(26, 48, 84, 0.3);
+}
+@media (max-width: 768px) {
+    .bistro-button {
+        position: relative;
+        overflow: hidden;
+    }
+}
+.night-sky-overlay {
+    opacity: 1;
+}
+.main-container {
+    background: rgba(20, 30, 50, 0.95);
+}
+.bistro-sign-inner {
+    background-color: #0a1525;
+}
+.shopping-list-header h2, .export-header h3, .bistro-table .ingredient-name, .empty-quote, .footer-text {
+    color: #d4af37;
+}
+.bistro-table th {
+    background-color: #0a1525;
+    color: white;
+}
+.bistro-table td {
+    color: #e0e0e0;
+    border-bottom: 1px solid #2a3854;
+}
+.bistro-table tr:nth-child(odd) td {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+.main-container {
+    animation: fadeInContainer 1s ease-out forwards;
+}
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

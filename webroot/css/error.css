@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+canvas {
+    display: block;
+}
+#score {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    font-size: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+#instructions {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    color: white;
+    font-family: Arial, sans-serif;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 5px;
+}
+noscript {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #2a2a42;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+noscript .error-wrapper {
+    text-align: center;
+    color: #f4e1d2;
+}
+noscript h1 {
+    font-size: 6em;
+    margin: 0;
+    color: #f7c948;
+}
+noscript p {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #ffffff;
+}
